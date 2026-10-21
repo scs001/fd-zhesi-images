@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* 哲思 Zhesi — 思辨夜世界。
+   继承识律家族的宋体衬线 display 与藏青血统，沉入午夜思辨：
+   hero 是深夜的思考场，六轴细线是页面唯一的动效时刻；
+   纸色正文区保留家族的冷静。selection 与 focus 用轴紫点题。 */
+@theme {
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", Georgia, serif;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-paper: #f7f7fa;
+  --color-mist: #ecedf3;
+  --color-night: #101a33;
+  --color-night-deep: #0a1226;
+  --color-ink: #212842;
+  --color-ink-soft: #565e78;
+  --color-line: #dcdde6;
+  --color-line-strong: #b9bccd;
+  --color-axis: #8b7fd6;
+  --color-axis-soft: #e6e2f7;
+  --color-moon: #e9ebf5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-axis-soft);
+  color: var(--color-night-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-axis);
+  outline-offset: 2px;
+}
+
+/* 六轴细线：页面唯一的动效时刻——加载时轴与环一次画成。 */
+@keyframes axis-draw {
+  from { stroke-dashoffset: var(--dash, 600); }
+  to { stroke-dashoffset: 0; }
+}
+.axis-draw {
+  stroke-dasharray: var(--dash, 600);
+  animation: axis-draw 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.axis-draw-1 { animation-delay: 0.1s; }
+.axis-draw-2 { animation-delay: 0.35s; }
+.axis-draw-3 { animation-delay: 0.6s; }
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-rise-1 { animation-delay: 0.05s; }
+.hero-rise-2 { animation-delay: 0.18s; }
+.hero-rise-3 { animation-delay: 0.32s; }
